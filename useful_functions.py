@@ -17,8 +17,6 @@ def selectFromDict(options, name="option"):
             print('Please select a valid ' + name + ' number')
     return selected
 
-# ---------------
-
 def selectFromList(options, name="option"):
     index = 0
     print('Select a ' + name + ':')

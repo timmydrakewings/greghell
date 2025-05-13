@@ -31,7 +31,8 @@ fuelTimes = pd.Series(
     index = ["charcoal", "block of charcoal", "creosote", "creosote bucket"]
 )
 
-def boiler_math(pressure):
+def boiler_math():
+    pressure = uf.selectFromList(["LP", "HP"])
     boilerSize = uf.selectFromList(boilerVars['Shape'].tolist())
     timeFrame = "hour"                                              #uf.selectFromList(timeTicks.index.to_list())
     fuelType = uf.selectFromList(ovenProd.index.to_list())
@@ -39,42 +40,18 @@ def boiler_math(pressure):
     numWater = int(input("How many water tanks?"))
     numOvens = int(input("How many coke ovens?"))
     rainMod = 0.8                                                   #float(input("What is the rain modifier?"))
-    if pressure == "high":
-        solidWater, solidSteam, waterProd = boiler_high(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens,rainMod)
-        liquidWater, liquidSteam, waterProd = boiler_high(boilerSize, timeFrame, 'creosote', numBoilers, numWater, numOvens,rainMod)
-        totalWater = waterProd-(solidWater+liquidWater)
-        totalSteam = solidSteam+liquidSteam
-        print("Total Water Difference: " + str(totalWater) + " Total Steam Production: " + str(totalSteam))
-    if pressure == "low":
-        solidWater, solidSteam, waterProd = boiler_low(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens,rainMod)
-        liquidWater, liquidSteam, waterProd = boiler_low(boilerSize, timeFrame, 'creosote', numBoilers, numWater, numOvens,rainMod)
-        totalWater = waterProd-(solidWater+liquidWater)
-        totalSteam = solidSteam+liquidSteam
-        print("Total Water Difference: " + str(totalWater) + " Total Steam Production: " + str(totalSteam))
+    solidWater, solidSteam, waterProd = boiler_vars(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens,rainMod, pressure)
+    liquidWater, liquidSteam, waterProd = boiler_vars(boilerSize, timeFrame, 'creosote', numBoilers, numWater, numOvens,rainMod, pressure)
+    totalWater = waterProd-(solidWater+liquidWater)
+    totalSteam = solidSteam+liquidSteam
+    print("Total Water Difference: " + str(totalWater) + " Total Steam Production: " + str(totalSteam))
 
-def boiler_low(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens, rainMod):
+def boiler_vars(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens, rainMod, pressure):
     tanks = boilerVars.loc[boilerVars['Shape'] == boilerSize, 'Size'].iloc[0]
-    lpMod = boilerVars.loc[boilerVars['Shape'] == boilerSize, 'LP'].iloc[0]
+    lpMod = boilerVars.loc[boilerVars['Shape'] == boilerSize, pressure].iloc[0]
     numTicks = timeTicks.loc[timeFrame]
     burnTime = fuelTimes.loc[fuelType]
     fuelConsumption = lpMod*numTicks/burnTime*numBoilers
-    steamProduction = tanks*numTicks*10*numBoilers
-    waterConsumption = steamProduction/150
-    ovenProduction = ovenProd.loc[fuelType]*numTicks*numOvens
-    waterProduction = numWater*rainMod*1.25*numTicks
-    fuelDifference = ovenProduction-fuelConsumption
-    waterDifference = waterProduction-waterConsumption
-    print("For " + fuelType + " use")
-    print("Fuel Difference: " + str(fuelDifference) + " Water Difference: " + str(waterDifference) + " Steam Production: " + str(steamProduction))
-    return waterConsumption, steamProduction, waterProduction
-
-
-def boiler_high(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens, rainMod):
-    tanks = boilerVars.loc[boilerVars['Shape'] == boilerSize, 'Size'].iloc[0]
-    hpMod = boilerVars.loc[boilerVars['Shape'] == boilerSize, 'HP'].iloc[0]
-    numTicks = timeTicks.loc[timeFrame]
-    burnTime = fuelTimes.loc[fuelType]
-    fuelConsumption = hpMod*numTicks/burnTime*numBoilers
     steamProduction = tanks*numTicks*10*numBoilers
     waterConsumption = steamProduction/150
     ovenProduction = ovenProd.loc[fuelType]*numTicks*numOvens
