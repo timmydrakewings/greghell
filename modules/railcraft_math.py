@@ -44,7 +44,7 @@ def boiler_math():
     liquidWater, liquidSteam, waterProd = boiler_vars(boilerSize, timeFrame, 'creosote', numBoilers, numWater, numOvens,rainMod, pressure)
     totalWater = waterProd-(solidWater+liquidWater)
     totalSteam = solidSteam+liquidSteam
-    print("Total Water Difference: " + str(totalWater) + " Total Steam Production: " + str(totalSteam))
+    print("Total Water Difference: " + str(totalWater) + " and Total Steam Production: " + str(totalSteam))
 
 def boiler_vars(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens, rainMod, pressure):
     tanks = boilerVars.loc[boilerVars['Shape'] == boilerSize, 'Size'].iloc[0]
@@ -59,5 +59,13 @@ def boiler_vars(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens,
     fuelDifference = ovenProduction-fuelConsumption
     waterDifference = waterProduction-waterConsumption
     print("For " + fuelType + " use")
-    print("Fuel Difference: " + str(fuelDifference) + " Water Difference: " + str(waterDifference) + " Steam Production: " + str(steamProduction))
+    print("Fuel Difference: " + str(fuelDifference) + "\nWater Difference: " + str(waterDifference) + "\nSteam Production: " + str(steamProduction))
     return waterConsumption, steamProduction, waterProduction
+
+# ---------------
+
+def coke_oven_blocks(num):
+    blocks = num * 36
+    bricks = blocks * 4
+    mats = bricks/2
+    print("Num blocks: " + uf.to_stack_str(blocks) + "\nNum bricks: " + uf.to_stack_str(bricks) + "\nNum sand and clay: " + uf.to_stack_str(mats))

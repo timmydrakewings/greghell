@@ -33,3 +33,16 @@ def selectFromList(options, name="option"):
         else:
             print('Please select a valid ' + name + ' number')
     return selected
+
+# ---------------
+
+def to_stack_str(num):
+    stacks = int(num//64)
+    leftover = int(num - (stacks*64))
+    if num <= 64:
+        return str(num)
+    elif leftover == 0:
+        result = str(stacks) + " stacks"
+    else:
+        result = str(stacks) + "x" + str(leftover)
+        return result
