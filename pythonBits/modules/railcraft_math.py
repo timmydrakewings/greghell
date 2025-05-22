@@ -4,11 +4,13 @@ from modules import useful_functions as uf
 
 def tank_math():
     width = int(input("What is the width?"))
-    height = int(input("What is the height?"))
     depth = int(input("What is the depth?"))
-    wall = (2*(depth*width))+((height-2)*4)
-    gauge = (2*((height-2)*(width-2)))+(2*((height-2)*(depth-2)))
-    print(str(wall) + " walls and " + str(gauge) + " gauges and 2 valves.")
+    height = int(input("What is the height?"))
+    capMod = int(input("How many buckets per block?"))
+    wall = (2*(depth*width))+((height-2)*4)-1
+    gauge = (2*((height-2)*(width-2)))+(2*((height-2)*(depth-2)))-1
+    capacity = (width*height*depth)*capMod*1000
+    print(uf.to_stack_str(wall) + " walls and " + uf.to_stack_str(gauge) + " gauges and 2 valves. Capacity is " + f"{capacity:,d}")
 
 # ---------------
 
@@ -44,7 +46,7 @@ def boiler_math():
     liquidWater, liquidSteam, waterProd = boiler_vars(boilerSize, timeFrame, 'creosote', numBoilers, numWater, numOvens,rainMod, pressure)
     totalWater = waterProd-(solidWater+liquidWater)
     totalSteam = solidSteam+liquidSteam
-    print("Total Water Difference: " + str(totalWater) + " and Total Steam Production: " + str(totalSteam))
+    print("Total Water Difference: " + f"{totalWater:,d}" + " and Total Steam Production: " + f"{totalSteam:,d}")
 
 def boiler_vars(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens, rainMod, pressure):
     tanks = boilerVars.loc[boilerVars['Shape'] == boilerSize, 'Size'].iloc[0]
@@ -60,7 +62,7 @@ def boiler_vars(boilerSize, timeFrame, fuelType, numBoilers, numWater, numOvens,
     waterDifference = waterProduction-waterConsumption
     print("For " + fuelType + " use")
     print("Fuel Difference: " + str(fuelDifference) + "\nWater Difference: " + str(waterDifference) + "\nSteam Production: " + str(steamProduction))
-    return waterConsumption, steamProduction, waterProduction
+    return int(waterConsumption), int(steamProduction), int(waterProduction)
 
 # ---------------
 
