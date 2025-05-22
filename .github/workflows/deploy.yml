@@ -1,19 +1,3 @@
-            - name: deploy2nekoweb
-  # You may pin to the exact commit or the version.
-  # uses: indiefellas/deploy2nekoweb@582191d07adee24037d8ca5897d5fbc2f078b4a0
-  uses: indiefellas/deploy2nekoweb@v4
-  with:
-    # Your nekoweb API key.
-    nekoweb-api-key: 377af70c9d532c1f7f4ed0a7f350eb54b3c457f285f95ff06af789058bd624ce 
-    # Your nekoweb cookie. (Required for Recently Updated feature)
-    nekoweb-cookie:  8476e7822e35ef01ea3c330c2a7c7e41ceafa517fd5ad2a9eae5feb5a8466433 
-    # The nekoweb folder to deploy to.
-    nekoweb-folder: 'https://timmydrakewings.nekoweb.org/'
-    # The directory you would like to deploy.
-    directory: 'public'
-
-
-
 name: deploy2nekoweb
 run-name: nekoweb push try
 on: [push]
