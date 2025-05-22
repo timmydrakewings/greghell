@@ -17,6 +17,6 @@ jobs:
         with:
           nekoweb-api-key: 377af70c9d532c1f7f4ed0a7f350eb54b3c457f285f95ff06af789058bd624ce
           nekoweb-cookie: 8476e7822e35ef01ea3c330c2a7c7e41ceafa517fd5ad2a9eae5feb5a8466433
-          nekoweb-folder: 'https://timmydrakewings.nekoweb.org/'
+          nekoweb-folder: https://timmydrakewings.nekoweb.org/
           directory: 'public'
 
