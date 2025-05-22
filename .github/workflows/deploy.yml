@@ -8,6 +8,31 @@
     # Your nekoweb cookie. (Required for Recently Updated feature)
     nekoweb-cookie:  8476e7822e35ef01ea3c330c2a7c7e41ceafa517fd5ad2a9eae5feb5a8466433 
     # The nekoweb folder to deploy to.
-    nekoweb-folder: https://timmydrakewings.nekoweb.org/
+    nekoweb-folder: 'https://timmydrakewings.nekoweb.org/'
     # The directory you would like to deploy.
-    directory: greghell/
+    directory: 'public'
+
+
+
+name: deploy2nekoweb
+run-name: nekoweb push try
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: deploy2nekoweb
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      # your build step here
+        
+      - name: deploy2nekoweb
+        uses: indiefellas/deploy2nekoweb@v4
+        with:
+          nekoweb-api-key: 377af70c9d532c1f7f4ed0a7f350eb54b3c457f285f95ff06af789058bd624ce
+          nekoweb-cookie: 8476e7822e35ef01ea3c330c2a7c7e41ceafa517fd5ad2a9eae5feb5a8466433
+          nekoweb-folder: 'https://timmydrakewings.nekoweb.org/'
+          directory: 'public'
+
