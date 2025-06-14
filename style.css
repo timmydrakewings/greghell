@@ -20,13 +20,13 @@ body {
 /* Inventory top row for header */
 .inventoryPanel {
   display: grid;
-  grid-template-columns: 75px 200px 75px auto 150px repeat(2, 75px);
+  grid-template-columns: 75px 200px 75px auto 75px 200px 75px;
   grid-template-rows: repeat(4, 75px);
   grid-template-areas:
-    "armor person . middle crafting craftingArrow craftingResult"
-    "armor person . middle crafting craftingArrow craftingResult"
-    "armor person . middle crafting craftingArrow craftingResult"
-    "armor person shield middle . . .";
+    "armor person . middle . person2 armor2"
+    "armor person . middle . person2 armor2"
+    "armor person . craftingArea . person2 armor2"
+    "armor person shield craftingArea shield2 person2 armor2";
   background: #c6c6c6;
   padding: 10px;
 
@@ -35,6 +35,13 @@ body {
     border-width: 4px;
     border-color: #373737 white white #373737;
     background: #8b8b8b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inventoryItem>a>img {
+    height: 60px;
   }
 
   /* Specific ids for sections of header */
@@ -48,6 +55,8 @@ body {
   #person {
     grid-area: person;
     background: #070d0d;
+    display: flex;
+    flex-direction: column;
   }
 
   #shield {
@@ -57,6 +66,45 @@ body {
   #middle {
     grid-area: middle;
     display: inline-block;
+    text-align: center;
+
+    p {
+      margin-top: -10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  #armor2 {
+    grid-area: armor2;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+  }
+
+  #person2 {
+    grid-area: person2;
+    background: #070d0d;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shield2 {
+    grid-area: shield2;
+  }
+
+  #craftingArea {
+    grid-area: craftingArea;
+    display: grid;
+    grid-template-columns: auto repeat(3, 75px) auto;
+    grid-template-rows: repeat(2, 75px);
+    grid-template-areas:
+      "crafting craftingArrow craftingResult"
+      "crafting craftingArrow craftingResult";
+    margin: auto;
   }
 
   #crafting {
@@ -83,16 +131,22 @@ body {
   }
 }
 
-
 .inventoryBox {
   /* General inventory item box */
   border-style: inset;
   border-width: 4px;
   border-color: #373737 white white #373737;
   background: #8b8b8b;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 10px 10px 10px;
   display: block;
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  ul, p, a {
+    margin-top: 5px;
+  }
 }
 
 .inventoryBox .titleBox {
@@ -111,6 +165,7 @@ body {
   margin: 10px;
   justify-content: center;
   width: 80%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -119,4 +174,20 @@ body {
   flex: 40%;
   display: flex;
   flex-direction: column;
+
+  *:last-child {
+    flex: 1;
+  }
+}
+
+#statuscafe {
+  padding: .5em;
+}
+
+#statuscafe-username {
+  margin-bottom: .5em;
+}
+
+#statuscafe-content {
+  margin: 0 1em 0.5em 1em;
 }

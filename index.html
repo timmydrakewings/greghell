@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code in GregHell</title>
   <meta name="description" content="Freshman at John Jay College, starting to blog my coding projects!" />
-  <link rel="icon" type="image/png" href="htmlBits/grassBlock.png" />
+  <link rel="icon" type="image/png" href="assets/grassblock.png" />
   <link href="/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 
@@ -15,29 +15,50 @@
     <div class="inventoryPanel">
       <div id="armor">
         <div class="inventoryItem">blog</div>
-        <div class="inventoryItem">programming</div>
         <div class="inventoryItem">crafts</div>
-        <div class="inventoryItem">github</div>
+        <div class="inventoryItem"><a href="links.html">links</a></div>
+        <div class="inventoryItem"><a href="https://github.com/timmydrakewings">github</a></div>
+      </div>
+      <div id="person" class="inventoryItem">
+        <a href="https://tamanotchi.world/23252c"><img src="https://tamanotchi.world/i2/23252"
+            alt="It's tamaNOTchi! Click to feed!" style="width:100px; height:auto"></a>
+        <a href="https://tamanotchi.world/23253c"><img src="https://tamanotchi.world/i2/23253"
+            alt="It's tamaNOTchi! Click to feed!" style="width:100px; height:auto; padding-top:10px;"></a>
+      </div>
+      <div id="shield" class="inventoryItem">
+        <a href="https://sarathewise.github.io/Farming-Sim/" title="Athena's Farming Sim!"><img
+            src="assets/sprout.png"></a>
       </div>
       <div id="middle">
-        <h1 style="text-align:center;">Welcome to My Site!</h1>
-        <p style="text-align:center;">
-          Freshman at John Jay College, starting to blog my coding projects!
+        <h1><a href="/">Welcome to My Site!</a></h1>
+        <p>
+          <<- Freshman at John Jay College, starting to blog my coding projects! <br> Graduate student at Dalhousie
+            University! ->>
         </p>
       </div>
-      <div id="person" class="inventoryItem"></div>
-      <div id="shield" class="inventoryItem">athena</div>
-      <div id="crafting">
-        <div class="inventoryItem"></div>
-        <div class="inventoryItem"></div>
-        <div class="inventoryItem"></div>
-        <div class="inventoryItem"></div>
+      <div id="craftingArea">
+        <div id="crafting">
+          <div class="inventoryItem"></div>
+          <div class="inventoryItem"></div>
+          <div class="inventoryItem"></div>
+          <div class="inventoryItem"></div>
+        </div>
+        <div id="craftingArrow">
+          <img src="assets/arrowright.svg" width="50px" />
+        </div>
+        <div id="craftingResult">
+          <div id="child" class="inventoryItem"></div>
+        </div>
       </div>
-      <div id="craftingArrow">
-        <img src="htmlBits/arrowRight.svg" width="50px" />
+      <div id="armor2">
+        <div class="inventoryItem">github</div>
+        <div class="inventoryItem">molecule calculator</div>
+        <div class="inventoryItem"><a href="https://pubs.acs.org/doi/10.1021/acs.jpcb.4c02882">undergrad work</a></div>
+        <div class="inventoryItem"><a href="https://www.xcdsystem.com/cic/program/3NP1X0F/index.cfm?pgid=3066&sid=29946&abid=115119">graduate work</a></div>
       </div>
-      <div id="craftingResult">
-        <div id="child" class="inventoryItem"></div>
+      <div id="person2" class="inventoryItem">
+      </div>
+      <div id="shield2" class="inventoryItem">
       </div>
     </div>
 
@@ -47,30 +68,41 @@
           <div class="titleBox">
             <h2>Blog</h2>
           </div>
+          <h4 style="margin-top:10px;">Current Status:</h4>
+          <div id="statuscafe">
+            <div id="statuscafe-username"></div>
+            <div id="statuscafe-content"></div>
+          </div>
+          <script src="https://status.cafe/current-status.js?name=timmydrakewings" defer></script>
         </div>
+        <div style="text-align:center; margin-top:10px;"><iframe src="https://shroom.ink/guard.html/?site=timmydrakewings&shroom=6"
+              height="250px" width="200px" scrolling="no" frameborder="0"></iframe>
+          </div>
       </div>
       <div class="frontOneCol">
         <div class="inventoryBox">
           <div class="titleBox">
             <h2>Projects</h2>
           </div>
-          <div>
-            <h4>Featured</h4>
-          </div>
-          <div>
-            <h4>WIP</h4>
-          </div>
+          <h4>Featured</h4>
+          <p><a href="https://www.xcdsystem.com/cic/program/3NP1X0F/index.cfm?pgid=3066&sid=29946&abid=115119">Poster presentation at CSC 2025!</a></p>
+          <h4>WIP</h4>
+          <ul>
+            <li> Anne Bolyn cosplay (Six the Musical) </li>
+            <li>This website</li>
+            <li>A comp sci degree</li>
+            --
+            <li>Calculator for molecule axes</li>
+          </ul>
         </div>
         <div class="inventoryBox">
           <div class="titleBox">
-            <h2>Crafts</h2>
+            <h2>Crafts and Cosplay</h2>
           </div>
-          <div>
-            <h4>Cosplay</h4>
-          </div>
-          <div>
-            <h4>Stuffies</h4>
-          </div>
+          <h4><a href="https://skye-doing-things-perhaps.tumblr.com/">View on my tumblr!</a></h4>
+          <!-- <h4>Cosplay</h4>
+          <p>Currently in progress: Anne Bolyn!</p>
+          <h4>Stuffies</h4> -->
         </div>
       </div>
     </div>
